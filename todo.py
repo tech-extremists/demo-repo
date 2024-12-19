@@ -14,6 +14,8 @@ def load_tasks():
     try:
         with open(file_path, "r") as file:
             tasks = json.load(file)
+    except json.JSONDecodeError:
+        print("Error: Failed to decode JSON from file.")
         last_modified = get_last_modified_timestamp(file_path)
         if last_modified:
             print(f"Tasks loaded. Last modified on: {last_modified}")
