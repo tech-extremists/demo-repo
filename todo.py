@@ -8,9 +8,12 @@ def save_tasks():
 tasks = []
 
 def add_task():
-    task = input("Enter a new task: ")
-    tasks.append({"task": task, "done": False})
-    print(f"Task added: {task}")
+    task = input("Enter a new task: ").strip()
+    if task:
+        tasks.append({"task": task, "done": False})
+        print(f"Task added: {task}")
+    else:
+        print("Task cannot be empty.")
     
 def show_menu():
     print("\nMenu:")
