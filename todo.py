@@ -21,6 +21,17 @@ def list_tasks():
     for i, task in enumerate(tasks):
         status = "✓" if task["done"] else "✗"
         print(f"{i + 1}. {task['task']} [{status}]")
+        
+def mark_done():
+    list_tasks()
+    if not tasks:
+        return
+    try:
+        task_num = int(input("Enter task number to mark as done: "))
+        tasks[task_num - 1]["done"] = True
+        print(f"Task {task_num} marked as done.")
+    except (ValueError, IndexError):
+        print("Invalid task number.")
 
 def main():
     print("Welcome to the To-Do List Application")
@@ -31,6 +42,8 @@ def main():
             add_task()
         elif choice == "2":
             list_tasks()
+        elif choice == "3":
+            mark_done()
         elif choice == "5":
             break
 
