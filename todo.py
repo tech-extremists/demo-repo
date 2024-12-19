@@ -1,11 +1,19 @@
 import json
 
+def load_tasks():
+    try:
+        with open("tasks.json", "r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        print("No previous tasks found. Starting fresh.")
+        return []
+
+tasks = load_tasks()
+
 def save_tasks():
     with open("tasks.json", "w") as file:
         json.dump(tasks, file)
-    print("Tasks saved.")
-    
-tasks = []
+    print("Tasks saved.")    
 
 def add_task():
     task = input("Enter a new task: ").strip()
