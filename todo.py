@@ -1,9 +1,23 @@
 import json
+import os
+from datetime import datetime
 
-def load_tasks():
+def get_last_modified_timestamp(file_path):
     try:
-        with open("tasks.json", "r") as file:
-            return json.load(file)
+        timestamp = os.path.getmtime(file_path)
+        return datetime.fromtimestamp(timestamp).strftime("%Y-%m-%d %H:%M:%S")
+    except FileNotFoundError:
+        return None
+    
+def load_tasks():
+    file_path = "tasks.json"
+    try:
+        with open(file_path, "r") as file:
+            tasks = json.load(file)
+        last_modified = get_last_modified_timestamp(file_path)
+        if last_modified:
+            print(f"Tasks loaded. Last modified on: {last_modified}")
+        return tasks
     except FileNotFoundError:
         print("No previous tasks found. Starting fresh.")
         return []
