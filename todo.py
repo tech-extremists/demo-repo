@@ -33,6 +33,17 @@ def mark_done():
     except (ValueError, IndexError):
         print("Invalid task number.")
 
+def delete_task():
+    list_tasks()
+    if not tasks:
+        return
+    try:
+        task_num = int(input("Enter task number to delete: "))
+        removed_task = tasks.pop(task_num - 1)
+        print(f"Task {task_num} deleted: {removed_task['task']}")
+    except (ValueError, IndexError):
+        print("Invalid task number.")
+        
 def main():
     print("Welcome to the To-Do List Application")
     while True:
@@ -44,6 +55,8 @@ def main():
             list_tasks()
         elif choice == "3":
             mark_done()
+        elif choice == "4":
+            delete_task()
         elif choice == "5":
             break
 
