@@ -17,6 +17,8 @@ def load_tasks():
     except json.JSONDecodeError:
         print("Error: Failed to decode JSON from the file.")
     except json.JSONDecodeError:
+        print("Error: Failed to decode JSON from the file.")
+    except json.JSONDecodeError:
         print("Error: Failed to decode JSON from file.")
         last_modified = get_last_modified_timestamp(file_path)
         if last_modified:
