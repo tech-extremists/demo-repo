@@ -1,3 +1,11 @@
+
+tasks = []
+
+def add_task():
+    task = input("Enter a new task: ")
+    tasks.append({"task": task, "done": False})
+    print(f"Task added: {task}")
+    
 def show_menu():
     print("\nMenu:")
     print("1. Add Task")
@@ -11,7 +19,9 @@ def main():
     while True:
         show_menu()
         choice = input("Enter your choice: ")
-        if choice == "5":
+        if choice == "1":
+            add_task()
+        elif choice == "5":
             break
 
 if __name__ == "__main__":
