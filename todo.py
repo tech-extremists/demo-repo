@@ -27,10 +27,13 @@ def list_tasks():
     if not tasks:
         print("No tasks added yet.")
         return
+    print("\nYour Tasks:")
+    print("-" * 20)
     for i, task in enumerate(tasks):
         status = "✓" if task["done"] else "✗"
         print(f"{i + 1}. {task['task']} [{status}]")
-        
+    print("-" * 20)
+     
 def mark_done():
     list_tasks()
     if not tasks:
