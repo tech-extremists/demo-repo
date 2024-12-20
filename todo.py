@@ -11,16 +11,14 @@ def get_last_modified_timestamp(file_path):
     
 def load_tasks():
     file_path = "tasks.json"
-    try:
-        with open(file_path, "r") as file:
-            tasks = json.load(file)
-        last_modified = get_last_modified_timestamp(file_path)
-        if last_modified:
-            print(f"Tasks loaded. Last modified on: {last_modified}")
-        return tasks
-    except FileNotFoundError:
-        print("No previous tasks found. Starting fresh.")
-        return []
+    with open(file_path, "r") as file:
+        tasks = json.load(file)
+
+    last_modified = get_last_modified_timestamp(file_path)
+    if last_modified:
+        print(f"Tasks loaded. Last modified on: {last_modified}")
+    return tasks
+
 
 tasks = load_tasks()
 
